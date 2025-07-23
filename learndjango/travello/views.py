@@ -24,7 +24,7 @@ def index(request):
     dest3.name = 'Bangaluru'
     dest3.img = 'destination_3.jpg'
     dest3.desc = 'Namma Bangaluru'
-    
+    dest3.price = 700
 
     
     dest = [dest1,dest2,dest3]
