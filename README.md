@@ -177,3 +177,42 @@ use this in file {% load static %}
 for production collect all static files : python manage.py collectstatic
 then run server
 
+ORM : Object Relational Mapping
+ in Django is a powerful feature that allows developers to interact with databases using Python code instead of writing raw SQL queries. It provides an abstraction layer between the application code and the database, making it easier to work with databases in a more object-oriented manner.
+
+ What is ORM?
+ORM is a technique that converts data between Python objects and database tables. Django’s ORM handles:
+
+Creating tables
+Inserting, updating, deleting rows
+Running queries like filtering, sorting, joining, etc.
+
+Go to Postgresql and create a new database : learningdjango
+to connect to the database : go to settings.py -> In DATABASES, specify the database name, username, password, and other connection details. : 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'learningdjango',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
+}
+: pip install psycopg2
+
+A normal class in models.py : file class Book(models.Model) should be like this to create a table in database 
+after editing models.py run : python manage.py makemigrations (add appname.apps.AppConfig to INSTALLED_APPS in settings.py)
+then run : python manage.py migrate
+
+Need to install Pillow library : pip install Pillow (for images)
+
+Admin Panel : Django provides a built-in admin interface that allows you to manage your data models easily. You can register your models with the admin site and customize the admin interface to suit your needs.
+python manage.py createsuperuser
+by registering the model in admin.py we can add, edit, delete data from admin panel.
+
+Why MEDIA_ROOT and MEDIA_URL?
+MEDIA_ROOT: This setting specifies the root directory where uploaded media files will be stored on the server. It's a directory path relative to the project's root directory.
+MEDIA_URL: This setting defines the URL prefix for accessing the uploaded media files. It's a URL path that starts with a slash (/) and is used to construct the URL for accessing the media files.
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
